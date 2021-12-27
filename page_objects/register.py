@@ -7,8 +7,8 @@ class RegisterNewUser(AppiumElement):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.open_register_page = Login(driver)
-        self.open_register_page.find_element(self.open_register_page.btn_register_id).click()
+        self.register_page = Login(driver)
+        self.find_element(self.register_page.btn_register_id).click()
         self.input_user_id = (AppiumBy.ID, 'br.com.alura.aluraesporte:id/input_nome')
         self.input_password_id = (AppiumBy.ID, 'br.com.alura.aluraesporte:id/input_senha')
         self.input_confirm_password_id = (AppiumBy.ID, 'br.com.alura.aluraesporte:id/input_confirmar_senha')
@@ -20,9 +20,9 @@ class RegisterNewUser(AppiumElement):
         self.input_confirm_password = self.find_element(self.input_confirm_password_id)
         self.btn_register_user = self.find_element(self.btn_register_user_id)
 
-    def register_user(self, user, password, confirm_password):
+    def register_user(self, user, password):
         self.input_user.send_keys(user)
         self.input_password.send_keys(password)
-        self.input_confirm_password.send_keys(confirm_password)
+        self.input_confirm_password.send_keys(password)
         self.btn_register_user.click()
 

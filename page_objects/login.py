@@ -11,6 +11,7 @@ class Login(AppiumElement):
         self.btn_login_id = (AppiumBy.ID, 'br.com.alura.aluraesporte:id/login_botao_logar')
         self.btn_register_id = (AppiumBy.ID, 'br.com.alura.aluraesporte:id/login_botao_cadastrar_usuario')
         self.error_login_id = (AppiumBy.ID, 'br.com.alura.aluraesporte:id/mensagem_erro_login')
+        self.element_action_bar = (AppiumBy.ID, 'br.com.alura.aluraesporte:id/action_bar')
 
     def find_screen_elements(self):
         self.input_user = self.find_element(self.input_user_id)
@@ -22,10 +23,7 @@ class Login(AppiumElement):
         self.input_user.send_keys(user)
         self.input_password.send_keys(password)
         self.btn_login.click()
-        self.element_is_visible(AppiumBy.ID, 'br.com.alura.aluraesporte:id/action_bar')
-
-    def click_btn_register(self):
-        self.btn_register.click()
+        self.element_is_visible(self.element_action_bar)
 
     def error_login_is_visible(self):
         return self.element_is_visible(self.error_login_id)

@@ -19,7 +19,7 @@ class AppiumElement(ABC):
     def find_element(self, locator):
         return self.driver.instance.find_element(*locator)
 
-    def element_is_visible(self, *locator):
+    def element_is_visible(self, locator):
         condition = EC.presence_of_element_located(locator)
         return bool(WebDriverWait(self.driver.instance, 10).until(condition))
 
