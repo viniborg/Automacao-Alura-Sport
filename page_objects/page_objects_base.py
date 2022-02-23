@@ -22,7 +22,3 @@ class AppiumElement(ABC):
     def element_is_visible(self, locator):
         condition = EC.presence_of_element_located(locator)
         return bool(WebDriverWait(self.driver.instance, 10).until(condition))
-
-    @abstractmethod
-    def find_screen_elements(self):
-        pass
